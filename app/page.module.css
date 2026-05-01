@@ -1,0 +1,67 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-darkest);
+}
+
+.main {
+  flex: 1;
+  width: 100%;
+}
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background: 
+    linear-gradient(135deg, var(--bg-darkest) 0%, var(--bg-dark) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.stats {
+  padding: 80px 0;
+  background: var(--bg-dark);
+  position: relative;
+}
+
+.stats::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    var(--apeg-pink) 0%,
+    var(--apeg-teal) 50%,
+    var(--apeg-yellow) 100%
+  );
+}
+
+.howItWorks {
+  padding: 80px 0;
+  background: var(--bg-darker);
+}
+
+.gallery {
+  padding: 80px 0;
+  background: var(--bg-dark);
+}
+
+.activity {
+  padding: 80px 0;
+  background: var(--bg-darker);
+}
+
+@media (max-width: 768px) {
+  .hero,
+  .stats,
+  .howItWorks,
+  .gallery,
+  .activity {
+    padding: 48px 0;
+  }
+}

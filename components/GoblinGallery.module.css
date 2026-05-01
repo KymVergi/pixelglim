@@ -1,0 +1,202 @@
+.loading {
+  text-align: center;
+  padding: 64px 0;
+}
+
+.empty {
+  text-align: center;
+  padding: 80px 32px;
+  background: var(--bg-dark);
+  border: 4px dashed var(--apeg-pink);
+}
+
+.emptyIcon {
+  font-size: 80px;
+  margin-bottom: 16px;
+  opacity: 0.5;
+}
+
+.emptyHint {
+  font-size: 10px;
+  color: var(--pixel-gray-3);
+  margin-top: 8px;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 24px;
+}
+
+.apeCard {
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.apeCard:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-pixel-xl), 0 0 30px rgba(255, 107, 157, 0.5);
+}
+
+.apeImage {
+  aspect-ratio: 1;
+  background: 
+    repeating-conic-gradient(
+      var(--bg-darker) 0% 25%,
+      var(--bg-dark) 0% 50%
+    ) 50% / 16px 16px;
+  border-bottom: 4px solid var(--apeg-pink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.apeDisplay {
+  font-size: 100px;
+  filter: drop-shadow(0 0 20px var(--apeg-pink));
+  transition: transform 0.3s;
+}
+
+.apeCard:hover .apeDisplay {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.apeInfo {
+  padding: 16px;
+}
+
+.apeId {
+  font-size: 12px;
+  color: var(--apeg-yellow);
+  margin-bottom: 12px;
+}
+
+.traits {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 24px;
+  backdrop-filter: blur(8px);
+}
+
+.modalContent {
+  max-width: 900px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: var(--error);
+  border: 2px solid var(--pixel-black);
+  color: var(--pixel-white);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 20px;
+  z-index: 10;
+  transition: transform 0.2s;
+  box-shadow: var(--shadow-pixel);
+}
+
+.closeBtn:hover {
+  transform: scale(1.2);
+}
+
+.modalGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  padding: 32px;
+}
+
+.modalImage {
+  aspect-ratio: 1;
+  background: 
+    repeating-conic-gradient(
+      var(--bg-darker) 0% 25%,
+      var(--bg-dark) 0% 50%
+    ) 50% / 16px 16px;
+  border: 4px solid var(--apeg-pink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.apeDisplayLarge {
+  font-size: 200px;
+  filter: drop-shadow(0 0 40px var(--apeg-pink));
+}
+
+.modalInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.section h3 {
+  font-size: 14px;
+  color: var(--apeg-teal);
+  margin-bottom: 12px;
+}
+
+.traitsList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.traitItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  background: var(--bg-darker);
+  border: 2px solid var(--apeg-pink);
+  font-size: 10px;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 968px) {
+  .modalGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .apeDisplayLarge {
+    font-size: 120px;
+  }
+}
+
+@media (max-width: 640px) {
+  .gallery {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 16px;
+  }
+  
+  .apeDisplay {
+    font-size: 60px;
+  }
+}

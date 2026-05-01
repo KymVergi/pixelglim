@@ -1,0 +1,67 @@
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+}
+
+.step {
+  text-align: center;
+  padding: 32px 24px;
+  transition: all 0.3s;
+  position: relative;
+}
+
+.step:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-pixel-xl), 0 0 30px rgba(78, 205, 196, 0.5);
+}
+
+.stepNumber {
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 40px;
+  background: var(--apeg-pink);
+  border: 4px solid var(--pixel-black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: bold;
+  box-shadow: var(--shadow-pixel);
+}
+
+.stepIcon {
+  font-size: 64px;
+  margin: 16px 0;
+  animation: pixel-bounce 2s ease-in-out infinite;
+}
+
+.step:nth-child(2) .stepIcon {
+  animation-delay: 0.2s;
+}
+
+.step:nth-child(3) .stepIcon {
+  animation-delay: 0.4s;
+}
+
+.step h3 {
+  font-size: 16px;
+  margin: 16px 0;
+  color: var(--apeg-teal);
+}
+
+.step p {
+  font-size: 11px;
+  line-height: 1.8;
+  color: var(--pixel-gray-4);
+}
+
+@media (max-width: 768px) {
+  .steps {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+}

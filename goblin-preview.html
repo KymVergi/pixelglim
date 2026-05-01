@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APEG - Pixel Goblins Preview</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0A0A0F;
+            color: #FFF;
+            font-family: 'Press Start 2P', monospace;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #7CFC00;
+            text-shadow: 0 0 20px #7CFC00;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 12px;
+            color: #FFE66D;
+            margin-bottom: 40px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+
+        .goblin-card {
+            background: #1A1A2E;
+            border: 4px solid #7CFC00;
+            padding: 20px;
+        }
+
+        .goblin-canvas {
+            width: 100%;
+            image-rendering: pixelated;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: crisp-edges;
+            background: repeating-conic-gradient(#0F0F1E 0% 25%, #1A1A2E 0% 50%) 50% / 8px 8px;
+            border: 2px solid #4ECDC4;
+        }
+
+        .goblin-info {
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 2px solid #7CFC00;
+        }
+
+        .goblin-title {
+            font-size: 12px;
+            color: #FFE66D;
+            margin-bottom: 12px;
+        }
+
+        .traits {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            font-size: 8px;
+        }
+
+        .trait {
+            padding: 4px 8px;
+            background: #7CFC00;
+            color: #000;
+            border: 2px solid #000;
+        }
+
+        .trait.rare {
+            background: #FF6B9D;
+            color: #FFF;
+        }
+
+        .trait.epic {
+            background: #9B59B6;
+            color: #FFF;
+        }
+
+        .trait.legendary {
+            background: #FFD700;
+            color: #000;
+        }
+
+        .note {
+            text-align: center;
+            font-size: 10px;
+            color: #4ECDC4;
+            margin-top: 40px;
+            line-height: 1.8;
+        }
+
+        .traits-legend {
+            margin-top: 40px;
+            padding: 20px;
+            background: #1A1A2E;
+            border: 2px solid #7CFC00;
+        }
+
+        .traits-legend h2 {
+            font-size: 14px;
+            color: #7CFC00;
+            margin-bottom: 16px;
+        }
+
+        .trait-category {
+            margin-bottom: 12px;
+            font-size: 9px;
+            line-height: 1.6;
+        }
+
+        .trait-category strong {
+            color: #FFE66D;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧌 APEG - PIXEL GOBLINS</h1>
+        <p class="subtitle">24×24 Pixel Art • 5 Traits × 5 Options = 3,125 Combos</p>
+
+        <div class="gallery">
+            <!-- Goblin #1 - Common Green -->
+            <div class="goblin-card">
+                <canvas id="goblin1" class="goblin-canvas" width="24" height="24"></canvas>
+                <div class="goblin-info">
+                    <div class="goblin-title">Goblin #1 - Common</div>
+                    <div class="traits">
+                        <span class="trait">GREEN SKIN</span>
+                        <span class="trait">NORMAL EYES</span>
+                        <span class="trait">SMILE</span>
+                        <span class="trait">NONE</span>
+                        <span class="trait">FOREST BG</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Goblin #2 - Warrior -->
+            <div class="goblin-card">
+                <canvas id="goblin2" class="goblin-canvas" width="24" height="24"></canvas>
+                <div class="goblin-info">
+                    <div class="goblin-title">Goblin #42 - Warrior</div>
+                    <div class="traits">
+                        <span class="trait rare">BLUE SKIN</span>
+                        <span class="trait">RED EYES</span>
+                        <span class="trait rare">HELMET</span>
+                        <span class="trait">FANGS</span>
+                        <span class="trait">DUNGEON BG</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Goblin #3 - Shaman -->
+            <div class="goblin-card">
+                <canvas id="goblin3" class="goblin-canvas" width="24" height="24"></canvas>
+                <div class="goblin-info">
+                    <div class="goblin-title">Goblin #420 - Shaman</div>
+                    <div class="traits">
+                        <span class="trait">PURPLE SKIN</span>
+                        <span class="trait epic">GLOWING EYES</span>
+                        <span class="trait epic">WIZARD HAT</span>
+                        <span class="trait">NEUTRAL</span>
+                        <span class="trait epic">MAGIC BG</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Goblin #4 - King -->
+            <div class="goblin-card">
+                <canvas id="goblin4" class="goblin-canvas" width="24" height="24"></canvas>
+                <div class="goblin-info">
+                    <div class="goblin-title">Goblin #777 - King</div>
+                    <div class="traits">
+                        <span class="trait rare">YELLOW SKIN</span>
+                        <span class="trait">NORMAL EYES</span>
+                        <span class="trait legendary">CROWN</span>
+                        <span class="trait legendary">GOLD TOOTH</span>
+                        <span class="trait legendary">GOLD BG</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Goblin #5 - Zombie -->
+            <div class="goblin-card">
+                <canvas id="goblin5" class="goblin-canvas" width="24" height="24"></canvas>
+                <div class="goblin-info">
+                    <div class="goblin-title">Goblin #999 - Undead</div>
+                    <div class="traits">
+                        <span class="trait legendary">ZOMBIE SKIN</span>
+                        <span class="trait epic">CYCLOPS EYE</span>
+                        <span class="trait">BONES</span>
+                        <span class="trait">TONGUE OUT</span>
+                        <span class="trait epic">GRAVEYARD BG</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="traits-legend">
+            <h2>🎨 TRAITS SYSTEM (5 × 5 = 3,125 combinations)</h2>
+            
+            <div class="trait-category">
+                <strong>SKIN:</strong> Green (40%), Blue (30%), Purple (20%), Yellow (8%), Zombie (2%)
+            </div>
+            
+            <div class="trait-category">
+                <strong>EYES:</strong> Normal (40%), Red (25%), Glowing (20%), One-Eyed (10%), Cyclops (5%)
+            </div>
+            
+            <div class="trait-category">
+                <strong>HEADWEAR:</strong> None (35%), Helmet (30%), Wizard Hat (20%), Crown (10%), Bones (5%)
+            </div>
+            
+            <div class="trait-category">
+                <strong>MOUTH:</strong> Smile (35%), Neutral (30%), Fangs (20%), Tongue Out (10%), Gold Tooth (5%)
+            </div>
+            
+            <div class="trait-category">
+                <strong>BACKGROUND:</strong> Forest (30%), Dungeon (25%), Magic (25%), Graveyard (15%), Gold (5%)
+            </div>
+        </div>
+
+        <p class="note">
+            24×24 pixels • Full Body Goblins<br>
+            100% On-Chain • Generated from Smart Contract
+        </p>
+    </div>
+
+    <script>
+        function pixel(ctx, x, y, color) {
+            ctx.fillStyle = color;
+            ctx.fillRect(x, y, 1, 1);
+        }
+
+        // GOBLIN #1 - Common Green
+        function drawGoblin1() {
+            const canvas = document.getElementById('goblin1');
+            const ctx = canvas.getContext('2d');
+            
+            // Background Forest Green
+            ctx.fillStyle = '#228B22';
+            ctx.fillRect(0, 0, 24, 24);
+            
+            const green = '#7CFC00';
+            const dark = '#556B2F';
+            
+            // Head
+            for(let x = 10; x <= 13; x++) pixel(ctx, x, 5, green);
+            for(let x = 9; x <= 14; x++) pixel(ctx, x, 6, green);
+            for(let y = 7; y <= 11; y++) {
+                for(let x = 8; x <= 15; x++) pixel(ctx, x, y, green);
+            }
+            for(let x = 9; x <= 14; x++) pixel(ctx, x, 12, green);
+            
+            // Big Ears
+            pixel(ctx, 6, 8, green);
+            pixel(ctx, 7, 8, green);
+            pixel(ctx, 6, 9, green);
+            pixel(ctx, 7, 9, green);
+            pixel(ctx, 16, 8, green);
+            pixel(ctx, 17, 8, green);
+            pixel(ctx, 16, 9, green);
+            pixel(ctx, 17, 9, green);
+            
+            // Eyes - Normal
+            pixel(ctx, 10, 9, '#000');
+            pixel(ctx, 13, 9, '#000');
+            pixel(ctx, 10, 8, '#FFF');
+            pixel(ctx, 13, 8, '#FFF');
+            
+            // Nose
+            pixel(ctx, 11, 10, dark);
+            pixel(ctx, 12, 10, dark);
+            
+            // Smile
+            pixel(ctx, 10, 11, '#000');
+            pixel(ctx, 11, 12, '#000');
+            pixel(ctx, 12, 12, '#000');
+            pixel(ctx, 13, 11, '#000');
+            
+            // Body
+            for(let y = 13; y <= 14; y++) {
+                for(let x = 8; x <= 15; x++) pixel(ctx, x, y, dark);
+            }
+            for(let y = 15; y <= 19; y++) {
+                for(let x = 9; x <= 14; x++) pixel(ctx, x, y, dark);
+            }
+            pixel(ctx, 7, 14, green);
+            pixel(ctx, 7, 15, green);
+            pixel(ctx, 16, 14, green);
+            pixel(ctx, 16, 15, green);
+            for(let x = 10; x <= 13; x++) pixel(ctx, x, 20, dark);
+        }
+
+        // GOBLIN #2 - Blue Warrior with Helmet
+        function drawGoblin2() {
+            const canvas = document.getElementById('goblin2');
+            const ctx = canvas.getContext('2d');
+            
+            // Background Dungeon
+            ctx.fillStyle = '#2C2C2C';
+            ctx.fillRect(0, 0, 24, 24);
+            
+            const blue = '#4169E1';
+            const dark = '#1E3A8A';
+            
+            // Helmet
+            for(let x = 8; x <= 15; x++) {
+                pixel(ctx, x, 3, '#808080');
+                pixel(ctx, x, 4, '#808080');
+            }
+            pixel(ctx, 9, 5, '#808080');
+            pixel(ctx, 14, 5, '#808080');
+            
+            // Head
+            for(let x = 10; x <= 13; x++) pixel(ctx, x, 5, blue);
+            for(let x = 9; x <= 14; x++) pixel(ctx, x, 6, blue);
+            for(let y = 7; y <= 11; y++) {
+                for(let x = 8; x <= 15; x++) pixel(ctx, x, y, blue);
+            }
+            for(let x = 9; x <= 14; x++) pixel(ctx, x, 12, blue);
+            
+            // Ears
+            pixel(ctx, 6, 8, blue);
+            pixel(ctx, 7, 8, blue);
+            pixel(ctx, 16, 8, blue);
+            pixel(ctx, 17, 8, blue);
+            
+            // Red Eyes
+            pixel(ctx, 10, 9, '#FF0000');
+            pixel(ctx, 13, 9, '#FF0000');
+            pixel(ctx, 10, 8, '#FF0000');
+            pixel(ctx, 13, 8, '#FF0000');
+            
+            // Fangs
+            pixel(ctx, 10, 11, '#FFF');
+            pixel(ctx, 13, 11, '#FFF');
+            pixel(ctx, 10, 12, '#FFF');
+            pixel(ctx, 13, 12, '#FFF');
+            
+            // Body - armor
+            for(let y = 13; y <= 14; y++) {
+                for(let x = 8; x <= 15; x++) pixel(ctx, x, y, '#808080');
+            }
+            for(let y = 15; y <= 19; y++) {
+                for(let x = 9; x <= 14; x++) pixel(ctx, x, y, dark);
+            }
+            pixel(ctx, 7, 14, blue);
+            pixel(ctx, 16, 14, blue);
+            for(let x = 10; x <= 13; x++) pixel(ctx, x, 20, dark);
+        }
+
+        // GOBLIN #3 - Purple Shaman with Wizard Hat
+        function drawGoblin3() {
+            const canvas = document.getElementById('goblin3');
+            const ctx = canvas.getContext('2d');
+            
+            // Background Magic
+            const gradient = ctx.createLinearGradient(0, 0, 24, 24);
+            gradient.addColorStop(0, '#9B59B6');
+            gradient.addColorStop(1, '#3498DB');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, 24, 24);
+            
+            const purple = '#9B59B6';
+            const dark = '#6C3483';
+            
+            // Wizard Hat
+            pixel(ctx, 11, 1, '#4B0082');
+            pixel(ctx, 12, 1, '#4B0082');
+            pixel(ctx, 10, 2, '#4B0082');
+            pixel(ctx, 11, 2, '#4B0082');
+            pixel(ctx, 12, 2, '#4B0082');
+            pixel(ctx, 13, 2, '#4B0082');
+            for(let x = 8; x <= 15; x++) {
+                pixel(ctx, x, 3, '#4B0082');
+                pixel(ctx, x, 4, '#4B0082');
+            }
+            // Stars on hat
+            pixel(ctx, 10, 3, '#FFD700');
+            pixel(ctx, 13, 3, '#FFD700');
+            
+            // Head
+            for(let x = 10; x <= 13; x++) pixel(ctx, x, 5, purple);
+            for(let x = 9; x <= 14; x++) pixel(ctx, x, 6, purple);
+            for(let y = 7; y <= 11; y++) {
+                for(let x = 8; x <= 15; x++) pixel(ctx, x, y, purple);
+            }
+            for(let x = 9; x <= 14; x++) pixel(ctx, x, 12, purple);
+            
+            // Ears
+            pixel(ctx, 6, 8, purple);
+            pixel(ctx, 7, 8, purple);
+            pixel(ctx, 16, 8, purple);
+            pixel(ctx, 17, 8, purple);
+            
+            // Glowing Eyes
+            pixel(ctx, 10, 9, '#00FFFF');
+            pixel(ctx, 13, 9, '#00FFFF');
+            pixel(ctx, 10, 8, '#00FFFF');
+            pixel(ctx, 13, 8, '#00FFFF');
+            pixel(ctx, 9, 9, '#00FFFF');
+            pixel(ctx, 14, 9, '#00FFFF');
+            
+            // Neutral mouth
+            pixel(ctx, 11, 11, '#000');
+            pixel(ctx, 12, 11, '#000');
+            
+            // Body - robe
+            for(let y = 13; y <= 14; y++) {
+                for(let x = 8; x <= 15; x++) pixel(ctx, x, y, dark);
+            }
+            for(let y = 15; y <= 19; y++) {
+                for(let x = 9; x <= 14; x++) pixel(ctx, x, y, dark);
+            }
+            pixel(ctx, 7, 14, purple);
+            pixel(ctx, 16, 14, purple);
+            for(let x = 10; x <= 13; x++) pixel(ctx, x, 20, dark);
+        }
+
+        // GOBLIN #4 - Yellow King with Crown
+        function drawGoblin4() {
+            const canvas = document.getElementById('goblin4');
+            const ctx = canvas.getContext('2d');
+            
+            // Background Gold
+            ctx.fillStyle = '#FFD700';
+            ctx.fillRect(0, 0, 24, 24);
+            
+            const yellow = '#F4E04D';
+            const dark = '#B8860B';
+            
+            // Crown
+            pixel(ctx, 9, 2, '#FFD700');
+            pixel(ctx, 11, 2, '#FFD700');
+            pixel(ctx, 13, 2, '#FFD700');
+            pixel(ctx, 15, 2, '#FFD700');
+            for(let x = 9; x <= 15; x++) {
+                pixel(ctx, x, 3, '#FFD700');
+                pixel(ctx, x, 4, '#FFD700');
+            }
+            // Jewels
+            pixel(ctx, 10, 2, '#FF0000');
+            pixel(ctx, 12, 2, '#FF0000');
+            pixel(ctx, 14, 2, '#FF0000');
+            
+            // Head
+            for(let x = 10; x <= 13; x++) pixel(ctx, x, 5, yellow);
+            for(let x = 9; x <= 14; x++) pixel(ctx, x, 6, yellow);
+            for(let y = 7; y <= 11; y++) {
+                for(let x = 8; x <= 15; x++) pixel(ctx, x, y, yellow);
+            }
+            for(let x = 9; x <= 14; x++) pixel(ctx, x, 12, yellow);
+            
+            // Ears
+            pixel(ctx, 6, 8, yellow);
+            pixel(ctx, 7, 8, yellow);
+            pixel(ctx, 16, 8, yellow);
+            pixel(ctx, 17, 8, yellow);
+            
+            // Normal eyes
+            pixel(ctx, 10, 9, '#000');
+            pixel(ctx, 13, 9, '#000');
+            
+            // Gold Tooth smile
+            pixel(ctx, 10, 11, '#000');
+            pixel(ctx, 11, 12, '#FFD700');
+            pixel(ctx, 12, 12, '#000');
+            pixel(ctx, 13, 11, '#000');
+            
+            // Body - royal robe
+            for(let y = 13; y <= 14; y++) {
+                for(let x = 8; x <= 15; x++) pixel(ctx, x, y, '#8B0000');
+            }
+            for(let y = 15; y <= 19; y++) {
+                for(let x = 9; x <= 14; x++) pixel(ctx, x, y, '#8B0000');
+            }
+            pixel(ctx, 7, 14, yellow);
+            pixel(ctx, 16, 14, yellow);
+            for(let x = 10; x <= 13; x++) pixel(ctx, x, 20, '#8B0000');
+        }
+
+        // GOBLIN #5 - Zombie with Cyclops Eye
+        function drawGoblin5() {
+            const canvas = document.getElementById('goblin5');
+            const ctx = canvas.getContext('2d');
+            
+            // Background Graveyard
+            ctx.fillStyle = '#4A4A4A';
+            ctx.fillRect(0, 0, 24, 24);
+            
+            const zombie = '#8FBC8F';
+            const dark = '#2F4F2F';
+            
+            // Bones on head
+            pixel(ctx, 10, 3, '#FFF');
+            pixel(ctx, 13, 3, '#FFF');
+            pixel(ctx, 9, 4, '#FFF');
+            pixel(ctx, 14, 4, '#FFF');
+            
+            // Head
+            for(let x = 10; x <= 13; x++) pixel(ctx, x, 5, zombie);
+            for(let x = 9; x <= 14; x++) pixel(ctx, x, 6, zombie);
+            for(let y = 7; y <= 11; y++) {
+                for(let x = 8; x <= 15; x++) pixel(ctx, x, y, zombie);
+            }
+            for(let x = 9; x <= 14; x++) pixel(ctx, x, 12, zombie);
+            
+            // Ears
+            pixel(ctx, 6, 8, zombie);
+            pixel(ctx, 7, 8, zombie);
+            pixel(ctx, 16, 8, zombie);
+            pixel(ctx, 17, 8, zombie);
+            
+            // Cyclops Eye
+            pixel(ctx, 11, 8, '#000');
+            pixel(ctx, 12, 8, '#000');
+            pixel(ctx, 11, 9, '#000');
+            pixel(ctx, 12, 9, '#000');
+            pixel(ctx, 11, 10, '#000');
+            pixel(ctx, 12, 10, '#000');
+            pixel(ctx, 11, 9, '#FF0000');
+            pixel(ctx, 12, 9, '#FF0000');
+            
+            // Tongue out
+            pixel(ctx, 11, 11, '#000');
+            pixel(ctx, 12, 11, '#000');
+            pixel(ctx, 11, 12, '#FF69B4');
+            pixel(ctx, 12, 12, '#FF69B4');
+            
+            // Body - torn clothes
+            for(let y = 13; y <= 14; y++) {
+                for(let x = 8; x <= 15; x++) {
+                    if(Math.random() > 0.3) pixel(ctx, x, y, dark);
+                }
+            }
+            for(let y = 15; y <= 19; y++) {
+                for(let x = 9; x <= 14; x++) {
+                    if(Math.random() > 0.3) pixel(ctx, x, y, dark);
+                }
+            }
+            pixel(ctx, 7, 14, zombie);
+            pixel(ctx, 16, 14, zombie);
+            for(let x = 10; x <= 13; x++) pixel(ctx, x, 20, dark);
+        }
+
+        // Draw all goblins
+        drawGoblin1();
+        drawGoblin2();
+        drawGoblin3();
+        drawGoblin4();
+        drawGoblin5();
+    </script>
+</body>
+</html>

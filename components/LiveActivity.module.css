@@ -1,0 +1,76 @@
+.loading {
+  text-align: center;
+  padding: 64px 0;
+}
+
+.activityPanel {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.activityList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.activityItem {
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  gap: 16px;
+  padding: 16px;
+  background: var(--bg-darker);
+  border: 2px solid var(--apeg-pink);
+  align-items: center;
+  transition: all 0.2s;
+}
+
+.activityItem:hover {
+  border-color: var(--apeg-teal);
+  background: var(--bg-dark);
+}
+
+.activityIcon {
+  font-size: 24px;
+}
+
+.activityInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.activityType {
+  font-size: 10px;
+  color: var(--apeg-yellow);
+  font-weight: bold;
+}
+
+.activityAddress {
+  font-size: 8px;
+  color: var(--pixel-gray-3);
+  font-family: monospace;
+}
+
+.activityAmount {
+  font-size: 12px;
+  color: var(--apeg-teal);
+  font-weight: bold;
+}
+
+.activityTime {
+  font-size: 8px;
+  color: var(--pixel-gray-3);
+}
+
+@media (max-width: 768px) {
+  .activityItem {
+    grid-template-columns: auto 1fr;
+    gap: 12px;
+  }
+  
+  .activityAmount,
+  .activityTime {
+    grid-column: 2;
+  }
+}
